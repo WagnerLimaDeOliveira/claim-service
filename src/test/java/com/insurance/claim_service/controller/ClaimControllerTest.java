@@ -95,8 +95,6 @@ public class ClaimControllerTest {
 
         given()
                 .contentType(ContentType.JSON)
-                .accept(ContentType.JSON)
-                .body(claim)
                 .when()
                 .get("/policy/" + POLICY_NUMBER + "/claim/" + createdClaim.getId())
                 .then()

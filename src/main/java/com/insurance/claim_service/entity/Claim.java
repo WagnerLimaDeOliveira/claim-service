@@ -14,26 +14,26 @@ public class Claim extends PanacheEntityBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name="policy_number", nullable = false)
+    @Column(name = "policy_number", nullable = false)
     String policyNumber;
 
-    @Column(name="date_of_loss")
+    @Column(name = "date_of_loss")
     Instant dateOfLoss;
 
-    @Column(name="date_filed", nullable = false)
+    @Column(name = "date_filed", nullable = false)
     Instant dateFiled;
 
     @Enumerated(EnumType.STRING)
     @JdbcType(PostgreSQLEnumJdbcType.class)
     ClaimStatus status;
 
-    @Column(name="amount_requested")
+    @Column(name = "amount_requested")
     double amountRequested;
 
-    @Column(name="amount_approved")
+    @Column(name = "amount_approved")
     double amountApproved;
 
-    @Column(name="description_of_loss", nullable = false)
+    @Column(name = "description_of_loss", nullable = false)
     String descriptionOfLoss;
 
     public Long getId() {

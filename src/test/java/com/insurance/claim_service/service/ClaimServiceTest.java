@@ -36,19 +36,19 @@ public class ClaimServiceTest {
         System.setProperty("kafka.bootstrap.servers", TestContainerSetupHelper.getKafkaBootstrapServers());
     }
 
+    @AfterAll
+    public static void tearDown() {
+        TestContainerSetupHelper.stopContainers();
+    }
+
     @BeforeEach
     @Transactional
     public void cleanDatabase() {
         entityManager.createNativeQuery("TRUNCATE TABLE claim RESTART IDENTITY CASCADE").executeUpdate();
     }
 
-    @AfterAll
-    public static void tearDown() {
-        TestContainerSetupHelper.stopContainers();
-    }
-
     @Test
-    public void createClaim_shouldReturnCreatedClaim(){
+    public void createClaim_shouldReturnCreatedClaim() {
         Claim claim = new Claim();
         claim.setAmountApproved(0);
         claim.setAmountRequested(40);
@@ -67,7 +67,7 @@ public class ClaimServiceTest {
     }
 
     @Test
-    public void getClaimById_shouldReturnRequestedClaim(){
+    public void getClaimById_shouldReturnRequestedClaim() {
         Claim claim = new Claim();
         claim.setAmountApproved(0);
         claim.setAmountRequested(40);
@@ -97,7 +97,7 @@ public class ClaimServiceTest {
     }
 
     @Test
-    public void updateClaim_shouldReturnUpdatedClaim(){
+    public void updateClaim_shouldReturnUpdatedClaim() {
         Claim claim = new Claim();
         claim.setAmountApproved(0);
         claim.setAmountRequested(40);
@@ -131,7 +131,7 @@ public class ClaimServiceTest {
     }
 
     @Test
-    public void deleteClaim_shouldDeleteClaimAndReturnTrue(){
+    public void deleteClaim_shouldDeleteClaimAndReturnTrue() {
         Claim claim = new Claim();
         claim.setAmountApproved(0);
         claim.setAmountRequested(40);

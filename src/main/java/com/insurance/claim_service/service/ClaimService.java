@@ -11,13 +11,13 @@ public class ClaimService {
     @Inject
     ClaimRepository claimRepository;
 
-    public Claim getClaimById(Long claimId){
+    public Claim getClaimById(Long claimId) {
         return claimRepository.findById(claimId);
     }
 
     @Transactional
-    public Claim createClaim(Claim claim){
-        if(claim.getId() == null){
+    public Claim createClaim(Claim claim) {
+        if (claim.getId() == null) {
             claimRepository.persist(claim);
             return claim;
         } else {
@@ -26,17 +26,17 @@ public class ClaimService {
     }
 
     @Transactional
-    public Claim updateClaim(Claim claim){
-        if(claim.getId() != null){
-        claimRepository.getEntityManager().merge(claim);
-        return claim;
+    public Claim updateClaim(Claim claim) {
+        if (claim.getId() != null) {
+            claimRepository.getEntityManager().merge(claim);
+            return claim;
         } else {
             return null;
         }
     }
 
     @Transactional
-    public boolean deleteClaimById(Long claimId){
+    public boolean deleteClaimById(Long claimId) {
         return claimRepository.deleteById(claimId);
     }
 }
